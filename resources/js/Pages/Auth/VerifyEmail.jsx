@@ -14,7 +14,7 @@ export default function VerifyEmail({ status }) {
     };
 
     return (
-        <>
+        <div>
             <Head title="Email Verification" />
 
             <div className="mb-4 text-sm text-gray-600">
@@ -42,7 +42,7 @@ export default function VerifyEmail({ status }) {
                     </Link>
                 </div>
             </form>
-        </>
+        </div>
     );
 }
 

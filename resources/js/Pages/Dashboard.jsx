@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/inertia-react';
 
 export default function Dashboard(props) {
     return (
-        <>
+        <div>
             <Head title="User Dashboard" />
 
             <div className="py-12">
@@ -14,7 +14,7 @@ export default function Dashboard(props) {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

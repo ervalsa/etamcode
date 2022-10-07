@@ -29,7 +29,7 @@ export default function ConfirmPassword() {
     };
 
     return (
-        <>
+        <div>
             <Head title="Confirm Password" />
 
             <div className="mb-4 text-sm text-gray-600">
@@ -58,7 +58,7 @@ export default function ConfirmPassword() {
                     </PrimaryButton>
                 </div>
             </form>
-        </>
+        </div>
     );
 }
 

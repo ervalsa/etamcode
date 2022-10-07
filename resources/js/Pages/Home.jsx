@@ -4,13 +4,13 @@ import {Head} from "@inertiajs/inertia-react";
 
 export default function Home() {
     return (
-        <>
+        <div>
             <Head title="Home" />
 
             <div>
                 Home
             </div>
-        </>
+        </div>
     );
 }
 
