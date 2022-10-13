@@ -14,12 +14,12 @@ export default function Create(props) {
 
     const handleChange = (e) => {
         setData(e.target.name, e.target.value)
-    }
+    };
 
     const storeHandler = (e) => {
         e.preventDefault();
         post(route('threads.store'))
-    }
+    };
 
     return (
         <div>
