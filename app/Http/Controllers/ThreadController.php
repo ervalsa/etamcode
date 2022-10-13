@@ -20,7 +20,9 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        //
+        return inertia('Threads/Index', [
+            'threads' => Thread::latest()->paginate(),
+        ]);
     }
 
     /**
@@ -120,6 +122,8 @@ class ThreadController extends Controller
      */
     public function destroy(Thread $thread)
     {
-        //
+        $this->authorize('delete', $thread);
+        $thread->delete();
+        return redirect(route('threads.index'));
     }
 }

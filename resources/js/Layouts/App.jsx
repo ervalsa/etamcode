@@ -5,10 +5,11 @@ export default function App({ auth, header, children }) {
 
     return (
         <div className="min-h-screen bg-gray-100">
-
             <Navbar/>
 
-            <main>{children}</main>
+            <div className="container">
+                <main className='pt-8'>{children}</main>
+            </div>
         </div>
     );
 }
