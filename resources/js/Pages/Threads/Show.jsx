@@ -7,12 +7,14 @@ export default function Show({thread}) {
         <div>
             <Head title={thread.title} />
 
-            <h1>{thread.title}</h1>
-            <div>
-                {thread.created_at}
-            </div>
-            <div className="leading-relaxed">
-                {thread.body}
+            <div className="mb-5 text-white">
+                <h1>{thread.title}</h1>
+                <div className="mb-4">
+                    {thread.created_at}
+                </div>
+                <div className="leading-relaxed">
+                    {thread.body}
+                </div>
             </div>
             <Link className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600" href={route('threads.destroy', thread.id)}
                   method="delete"
