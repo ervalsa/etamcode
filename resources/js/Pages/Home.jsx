@@ -26,6 +26,14 @@ export default function Home() {
                     <h1 className="font-bold text-center text-4xl mt-0 mb-2">Pilih Topik dan Dapatkan Bantuan<br/>dari Programmer</h1>
                     <p className="text-center">Banyaknya bahasa pemrograman, framework, dan tools yang bisa ditanyakan dan<br/>sudah dikelompokkan kedalam topik-topik tertentu</p>
                 </div>
+
+                <div>
+
+                </div>
+            </div>
+
+            <div>
+
             </div>
         </div>
     );
