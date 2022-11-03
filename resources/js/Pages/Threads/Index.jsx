@@ -14,16 +14,13 @@ export default function Index(props) {
                     <Link href="#" className="bg-indigo-900 px-2 py-1 rounded-[20px] text-white font-medium text-sm">
                         {thread.category.name}
                     </Link>
-                    <Link href={route('threads.show', thread.id)}>
+                    <Link href={route('threads.show', thread.slug)}>
                         <h1 className="py-2 text-lg">{thread.title}</h1>
                     </Link>
 
-                    <div className="flex items-center">
-                        <img className="w-8 h-8 rounded-full mr-3" src={thread.user.picture} alt={thread.user.name}/>
-                        <div className="flex flex-col">
-                            <h4>{thread.user.name}</h4>
-                            <span className="text-xs">{thread.created_at}</span>
-                        </div>
+                    <div className="flex justify-between">
+                        <h4>{thread.user.name}</h4>
+                        <span className="text-xs">{thread.created_at}</span>
                     </div>
                 </div>
             )) : 'No threads.'}

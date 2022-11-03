@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ThreadResource extends JsonResource
+class ReplyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,20 +16,13 @@ class ThreadResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'slug' => $this->slug,
             'body' => $this->body,
             'created_at' => $this->created_at->format("d F, Y"),
-            'category' => [
-                'id' => $this->category->id,
-                'name' => $this->category->name,
-                'slug' => $this->category->slug,
-            ],
             'user' => [
-                'id' => $this->user->id,
+                'id' => $this->user_id,
                 'name' => $this->user->name,
-                'picture' => $this->when(request()->routeIs('threads.show', $this->slug), $this->user->picture()),
-            ],
+                'picture' => $this->user->picture()
+            ]
         ];
     }
 }

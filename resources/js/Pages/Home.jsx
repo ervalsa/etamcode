@@ -1,6 +1,6 @@
 import React from "react";
 import App from "@/Layouts/App";
-import {Head} from "@inertiajs/inertia-react";
+import {Head, Link} from "@inertiajs/inertia-react";
 import PrimaryButton from "@/Components/PrimaryButton";
 
 export default function Home() {
@@ -16,7 +16,9 @@ export default function Home() {
                 </h1>
                 <p className="mb-4">Tingkatkan kemampuan Anda dengan berkontribusi forum tanya jawab,<br/>menulis blog dan lainnya dengan EtamCode</p>
                 <div className="flex flex-row gap-4">
-                    <PrimaryButton className="bg-gradient-to-l from-blue-600 to-indigo-500 rounded-[20px]">Jelajahi Forum</PrimaryButton>
+                    <Link href={route('threads.index')}>
+                        <PrimaryButton className="bg-gradient-to-l from-blue-600 to-indigo-500 rounded-[20px]">Jelajahi Forum</PrimaryButton>
+                    </Link>
                     <PrimaryButton className="rounded-[20px] bg-indigo-500">Baca Blog</PrimaryButton>
                 </div>
             </div>
@@ -25,6 +27,20 @@ export default function Home() {
                 <div className="text-white">
                     <h1 className="font-bold text-center text-4xl mt-0 mb-2">Pilih Topik dan Dapatkan Bantuan<br/>dari Programmer</h1>
                     <p className="text-center">Banyaknya bahasa pemrograman, framework, dan tools yang bisa ditanyakan dan<br/>sudah dikelompokkan kedalam topik-topik tertentu</p>
+                </div>
+            </div>
+
+            <div className="mt-[50px]">
+                <div className="text-white">
+                    <h1 className="font-bold text-center text-4xl mt-0 mb-2">Pertanyaan Terbaru</h1>
+                    <p className="text-center">Ini adalah daftar pertanyaan yang baru saja ditanyakan di EtamCode</p>
+                </div>
+            </div>
+
+            <div className="mt-[50px]">
+                <div className="text-white">
+                    <h1 className="font-bold text-center text-4xl mt-0 mb-2">Blog Terakhir</h1>
+                    <p className="text-center">Jika mempunyai waktu maka luangkan dan manfaatkan dengan membaca<br/>blog-blog yang ditulis oleh pengguna EtamCode yang mungkin bermanfaat<br/>bagi Anda</p>
                 </div>
             </div>
         </div>

@@ -28,9 +28,11 @@ export default function Create(props) {
             <div>
                 <form onSubmit={storeHandler}>
                     <div className="mb-5">
+                        <p className="text-white text-lg">Judul</p>
                         <TextInput type="text" name="title" value={data.title} handleChange={handleChange}/>
                     </div>
                     <div className="mb-5">
+                        <p className="text-white text-lg">Isi</p>
                         <textarea name="body" value={data.body} onChange={handleChange}/>
                     </div>
                     <div className="mb-5">
@@ -39,7 +41,7 @@ export default function Create(props) {
                             {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                     </div>
-                    <PrimaryButton>Buat Thread</PrimaryButton>
+                    <PrimaryButton className="bg-indigo-500">Buat Thread</PrimaryButton>
                 </form>
             </div>
         </div>

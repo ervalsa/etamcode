@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -45,5 +46,7 @@ Route::get('/admin/dashboard', function() {
 
 // Threads
 Route::resource('threads', ThreadController::class);
+
+Route::post('threads/{thread:slug}/reply', [ReplyController::class, 'store'])->name('replies.store');
 
 require __DIR__.'/auth.php';
