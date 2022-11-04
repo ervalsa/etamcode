@@ -14,7 +14,7 @@ export default function Edit({ thread, categories}) {
 
     const updateHandler = (e) => {
         e.preventDefault()
-        put(route('threads.update', thread.id))
+        put(route('threads.update', thread.slug))
     };
 
     const handleChange = (e) => {

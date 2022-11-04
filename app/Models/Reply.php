@@ -11,13 +11,21 @@ class Reply extends Model
 
     protected $guarded = [];
 
-    public function user() {
+    protected $with = ['children.user'];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function thread() {
+    public function thread()
+    {
         return $this->belongsTo(Thread::class);
     }
 
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
 
 }

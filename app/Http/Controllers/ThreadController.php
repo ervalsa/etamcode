@@ -79,7 +79,8 @@ class ThreadController extends Controller
                 ReplyResource::collection(
                     $thread
                         ->replies()
-                        ->with('user')
+                        ->whereNull('parent_id')
+                        ->with(['user'])
                         ->get()
                 ),
         ]);

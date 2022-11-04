@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('thread_id');
+            $table->foreignId("parent_id")->nullable();
             $table->text('body');
             $table->timestamps();
         });

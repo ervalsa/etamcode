@@ -18,6 +18,12 @@ class ReplyResource extends JsonResource
             'id' => $this->id,
             'body' => $this->body,
             'created_at' => $this->created_at->format("d F, Y"),
+            'children' => ReplyResource::collection(
+                $this->when(
+                    $this->has('children'),
+                    $this->children
+                )
+            ),
             'user' => [
                 'id' => $this->user_id,
                 'name' => $this->user->name,

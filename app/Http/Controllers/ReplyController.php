@@ -19,6 +19,7 @@ class ReplyController extends Controller
         ]);
 
         $request->user()->replies()->create([
+            'parent_id' => $request->parent_id ?? null,
             'body' => $request->body,
             'thread_id' => $thread->id
         ]);
