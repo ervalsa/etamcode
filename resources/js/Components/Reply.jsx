@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm } from "@inertiajs/inertia-react";
 
-export default function Reply({ thread }) {
+export default function Reply({ thread, auth }) {
 
     const { data, setData, post, reset } = useForm({
         body: '',
@@ -25,7 +25,7 @@ export default function Reply({ thread }) {
 
     return (
         <div className="flex flex-col">
-            {!data.parent_id &&
+            { auth.user ? !data.parent_id &&
                 <form className="my-4" onSubmit={replyStoreHandler}>
                     <div className="mb-4">
                             <textarea
@@ -37,7 +37,7 @@ export default function Reply({ thread }) {
                     </div>
                     <PrimaryButton className="hover:bg-blue-800">Reply</PrimaryButton>
                 </form>
-            }
+            : ''}
             <div>
                 { thread.replies.length ? thread.replies.map(reply => (
                     <div key={reply.id}>
@@ -52,10 +52,13 @@ export default function Reply({ thread }) {
                                 </div>
                                 <p className="text-white">{reply.body}</p>
                                 <div>
-                                    <button className="px-4 py-2 mb-2 bg-gray-900 rounded-md font-semibold text-xs text-white uppercase hover:bg-blue-800"
-                                            onClick={ () => showReplyForm(reply)}>
-                                        Reply
-                                    </button>
+                                    {auth.user &&
+                                        <button className="px-4 py-2 mb-2 bg-gray-900 rounded-md font-semibold text-xs text-white uppercase hover:bg-blue-800"
+                                                onClick={ () => showReplyForm(reply)}>
+                                            Reply
+                                        </button>
+                                    }
+
                                     { data.parent_id ? data.parent_id === reply.id &&
                                         <form onSubmit={replyStoreHandler}>
                                             <div className="mb-2">

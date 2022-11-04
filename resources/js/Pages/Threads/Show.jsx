@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import App from "@/Layouts/App";
-import {Head, Link} from "@inertiajs/inertia-react";
+import {Head, Link, usePage} from "@inertiajs/inertia-react";
 import Reply from "@/Components/Reply";
 
-export default function Show({thread}) {
+export default function Show({ thread }) {
+
+    const { auth } = usePage().props;
 
     return (
         <div>
@@ -17,13 +19,16 @@ export default function Show({thread}) {
                     {thread.data.body}
                 </div>
             </div>
-            <Link className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600" href={route('threads.destroy', thread.data.slug)}
-                  method="delete"
-                  as="button">
-                Delete
-            </Link>
 
-            <Reply thread={ thread }/>
+            {auth.user ? auth.user.id === thread.data.user.id &&
+                <Link className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600" href={route('threads.destroy', thread.data.slug)}
+                      method="delete"
+                      as="button">
+                    Delete
+                </Link>
+            : '' }
+
+            <Reply {... { auth, thread }}/>
         </div>
     );
 }
