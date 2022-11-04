@@ -28,4 +28,9 @@ class Reply extends Model
         return $this->hasMany(self::class, 'parent_id');
     }
 
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
+    }
+
 }
