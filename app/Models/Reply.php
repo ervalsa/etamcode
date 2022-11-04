@@ -11,7 +11,7 @@ class Reply extends Model
 
     protected $guarded = [];
 
-    protected $with = ['children.user'];
+    protected $with = ['children.user', 'user'];
 
     public function user()
     {

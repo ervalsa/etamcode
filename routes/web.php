@@ -50,7 +50,6 @@ Route::resource('threads', ThreadController::class);
 
 Route::post('threads/{thread:slug}/reply', [ReplyController::class, 'store'])->name('replies.store');
 
-Route::post('likes', LikeController::class)
-    ->name('likes.store');
+Route::post('likes', LikeController::class)->name('likes.store');
 
 require __DIR__.'/auth.php';

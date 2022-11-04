@@ -74,13 +74,13 @@ class ThreadController extends Controller
      */
     public function show(Thread $thread)
     {
-        $thread = (new ThreadResource($thread))->additional([
+        $thread = (new ThreadResource($thread->loadCount('likes')))->additional([
             'replies' =>
                 ReplyResource::collection(
                     $thread
                         ->replies()
+                        ->withCount('likes')
                         ->whereNull('parent_id')
-                        ->with(['user'])
                         ->get()
                 ),
         ]);

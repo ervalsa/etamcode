@@ -20,6 +20,7 @@ class ThreadResource extends JsonResource
             'slug' => $this->slug,
             'body' => $this->body,
             'created_at' => $this->created_at->format("d F, Y"),
+            'likes_count' => $this->likes_count,
             'category' => [
                 'id' => $this->category->id,
                 'name' => $this->category->name,
