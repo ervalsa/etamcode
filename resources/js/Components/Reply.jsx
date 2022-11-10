@@ -49,17 +49,22 @@ export default function Reply({ thread, auth }) {
                                         <div className="flex flex-row gap-x-2">
                                             <h2 className="text-white font-bold">{reply.user.name}</h2>
                                             <h4 className="text-gray-400">{reply.created_at}</h4>
+                                            {thread.data.answer_id === reply.id &&
+                                                <div className="bg-green-500 text-white px-2 py-1 rounded">
+                                                    Best
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                     <p className="text-white">{reply.body}</p>
                                     <div className="text-white">
                                         <div className="flex flex-row gap-x-2">
-                                            {auth.user &&
+                                            {auth.user && reply.parent_id == null?
                                                 <button className="px-4 py-2 bg-gray-900 rounded-md font-semibold text-xs text-white uppercase hover:bg-blue-800"
                                                         onClick={ () => showReplyForm(reply)}>
                                                     Reply
                                                 </button>
-                                            }
+                                            : '' }
 
                                             {auth.user &&
                                                 <Link href={route('likes.store')}
@@ -71,8 +76,16 @@ export default function Reply({ thread, auth }) {
                                                     Like
                                                 </Link>
                                             }
-
                                             <span> {reply.likes_count } Disukai</span>
+                                            {auth.user.id === thread.data.user.id &&
+                                                <Link
+                                                    href={ route('answer.store', thread.data.slug) }
+                                                    data={{ answer_id: reply.id }}
+                                                    method="POST"
+                                                    as="button">
+                                                    Mark as best
+                                                </Link>
+                                            }
                                         </div>
                                 </div>
                                     { data.parent_id ? data.parent_id === reply.id &&
@@ -104,6 +117,11 @@ export default function Reply({ thread, auth }) {
                                                     <div className="flex flex-row gap-x-2">
                                                         <h2 className="text-white font-bold">{child.user.name}</h2>
                                                         <h4 className="text-gray-400">{child.created_at}</h4>
+                                                        {thread.data.answer_id === child.id &&
+                                                            <div className="bg-green-500 text-white px-2 py-1 rounded">
+                                                                Best
+                                                            </div>
+                                                        }
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-col gap-y-2">
@@ -121,6 +139,15 @@ export default function Reply({ thread, auth }) {
                                                             </Link>
                                                         }
                                                         <span> {child.likes_count } Disukai </span>
+                                                        {auth.user.id === thread.data.user.id &&
+                                                            <Link
+                                                                href={ route('answer.store', thread.data.slug)}
+                                                                method="POST"
+                                                                data={{ answer_id: child.id }}
+                                                                as="button">
+                                                                Mark as best
+                                                            </Link>
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>

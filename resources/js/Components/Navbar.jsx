@@ -23,6 +23,7 @@ export default function Navbar() {
                             <div className="flex items-center gap-x-4">
                                 <Link href={route('threads.create')}>New Thread</Link>
                                 <Link href={route('dashboard')}>Dashboard</Link>
+                                <Link>{auth.user.name}</Link>
                                 <Link method="post" href={route('logout')} as="button">
                                     Log Out
                                 </Link>

@@ -31,4 +31,9 @@ class Thread extends Model
     {
         return $this->morphMany(Like::class, 'likeable');
     }
+
+    public function answer()
+    {
+        return $this->belongsTo(Reply::class, 'answer_id');
+    }
 }
