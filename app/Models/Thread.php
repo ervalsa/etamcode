@@ -11,6 +11,8 @@ class Thread extends Model
 
     protected $guarded = [];
 
+    protected $withCount = ['replies', 'likes'];
+
     public function getRouteKeyName() {
         return 'slug';
     }
