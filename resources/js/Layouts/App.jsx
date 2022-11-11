@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from "@/Components/Navbar";
+import Sidebar from "@/Components/Sidebar";
 
 export default function App({ auth, header, children }) {
 
@@ -8,7 +9,15 @@ export default function App({ auth, header, children }) {
             <Navbar/>
 
             <div className="container">
-                <main className='pt-[50px]'>{children}</main>
+                <div className="flex flex-col lg:flex-row pt-8 gap-x-10">
+                    <div className="w-full lg:w-1/5">
+                        <Sidebar/>
+                    </div>
+                    <div className="w-full lg:w-4/5">
+                        {children}
+                    </div>
+                </div>
+                {/*<main className='pt-[50px]'>{children}</main>*/}
             </div>
         </div>
     );

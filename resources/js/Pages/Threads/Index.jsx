@@ -22,7 +22,8 @@ export default function Index(props) {
 
     return (
         <div className="space-y-4">
-            <div className="flex flex-col justify-between">
+            <div className="flex justify-between">
+                <Filter categories={categories} initialState={filter.category}/>
                 <input
                     placeholder="Search ..."
                     type="text"
@@ -30,7 +31,6 @@ export default function Index(props) {
                     id="search"
                     value={keyword}
                     onChange={(e) => setKeyword(e.target.value)}/>
-                <Filter categories={categories} initialState={filter.category}/>
             </div>
             {threads.length ? threads.map(thread => (
                 <div className="block bg-white shadow-sm border p-5 rounded-lg hover:bg-blue-500 hover:text-white transition duration-150" key={thread.id}>
