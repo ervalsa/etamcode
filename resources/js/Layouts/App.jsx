@@ -17,7 +17,6 @@ export default function App({ auth, header, children }) {
                         {children}
                     </div>
                 </div>
-                {/*<main className='pt-[50px]'>{children}</main>*/}
             </div>
         </div>
     );

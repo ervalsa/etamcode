@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class ThreadResource extends JsonResource
 {
@@ -19,6 +20,7 @@ class ThreadResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'body' => $this->body,
+            'teaser' => Str::limit($this->body, 100),
             'created_at' => $this->created_at->format("d F, Y"),
             'answer_id' => $this->answer_id,
             'likes_count' => $this->likes_count,
@@ -30,7 +32,7 @@ class ThreadResource extends JsonResource
             'user' => [
                 'id' => $this->user->id,
                 'name' => $this->user->name,
-                'picture' => $this->when(request()->routeIs('threads.show', $this->slug), $this->user->picture()),
+                'picture' => $this->user->picture(),
             ],
         ];
     }

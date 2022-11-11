@@ -9,7 +9,7 @@ export default function Sidebar() {
     return (
         <div className="space-y-6 text-sm">
 
-            <Link className="block w-full py-2 px-4 text-white bg-gradient-to-l from-blue-600 to-indigo-500 rounded-lg gap-x-2 text-center font-semibold" href="/threads/create">
+            <Link className="block w-full py-2 px-4 text-white bg-gradient-to-l from-blue-600 to-indigo-500 rounded-lg gap-x-2 text-center font-semibold" href={route('threads.create')}>
                 Create New Thread
             </Link>
 
