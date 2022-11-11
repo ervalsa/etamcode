@@ -28,7 +28,8 @@ class ThreadController extends Controller
             ->when($request->search, fn ($q, $key) => $q->where('title', 'like', "%{$key}%"));
         return inertia('Threads/Index', [
             'threads' => ThreadResource::collection($threads->latest()->paginate()->withQueryString()),
-            'filter' => $request->only(['search', 'page'])
+            'categories' => Category::get(),
+            'filter' => $request->only(['search', 'page', 'category'])
         ]);
     }
 
