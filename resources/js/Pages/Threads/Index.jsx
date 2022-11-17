@@ -40,7 +40,7 @@ export default function Index(props) {
                 </div>
             </div>
             {threads.length ? threads.map(thread => (
-                <div className="block bg-white shadow-sm border p-5 rounded-lg hover:bg-blue-500 hover:text-white transition duration-150" key={thread.id}>
+                <div className="block text-white bg-[#2D2F3A] shadow-sm p-5 rounded-lg hover:bg-blue-500 hover:text-white transition duration-150" key={thread.id}>
                     <Link href={route('threads.show', thread.slug)}>
                         <div className="flex flex-col gap-y-4">
                             <div>
