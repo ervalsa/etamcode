@@ -23,7 +23,7 @@ export default function Index(props) {
     return (
         <div className="space-y-4">
             <div className="flex items-center justify-between w-full">
-                <div>
+                <div className="flex flex-col lg:flex-row lg:items-center gap-2">
                     <Filter categories={categories} initialState={filter.category}/>
                 </div>
                 <div className="bg-white flex items-center overflow-hidden shadow rounded-lg px-2">
@@ -86,8 +86,11 @@ export default function Index(props) {
                         </div>
                     </Link>
                 </div>
-            )) : 'No threads.'}
-
+            )) :
+                <div className='bg-white border border-dashed p-10 text-center text-gray-800 rounded-2xl'>
+                    No threads.
+                </div>
+            }
             <Pagination meta={meta}/>
         </div>
     );

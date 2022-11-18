@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Thread;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class ThreadController extends Controller
@@ -23,13 +24,32 @@ class ThreadController extends Controller
      */
     public function index(Request $request)
     {
+        if (in_array($request->filtered, ['my-participation', 'my-answer', 'my-question'])) {
+            abort_if(!Auth::check(), 401);
+        }
+
         $threads = Thread::query()->with(['category', 'user'])
-            ->when($request->category, fn ($q, $slug) => $q->whereBelongsTo(Category::whereSlug($slug)->first()))
-            ->when($request->search, fn ($q, $key) => $q->where('title', 'like', "%{$key}%"));
+            ->when($request->category, fn ($q, $slug) => $q->whereBelongsTo(Category::whereSlug($slug)->firstOr(fn () => abort(404))))
+            ->when($request->search, fn ($q, $key) => $q->where('title', 'like', "%{$key}%"))
+            ->when($request->filtered, function($q, $value) {
+                switch ($value) {
+                    case 'latest': $q->latest(); break;
+                    case 'oldest': $q->oldest(); break;
+                    case 'my-questions': $q->whereBelongsTo(Auth::user()); break;
+                    case 'my-participation': $q->whereHas('replies', fn($r) => $r->whereBelongsTo(Auth::user())); break;
+                    case 'my-answer': $q->whereNotNull('answer_id')->whereBelongsTo(Auth::user()); break;
+                    case 'solved': $q->whereNotNull('answer_id'); break;
+                    case 'unsolved': $q->whereHas('replies')->whereNull('answer_id'); break;
+                    case 'no-replies': $q->doesntHave('replies'); break;
+
+
+                    default: abort(404); break;
+                }
+            });
         return inertia('Threads/Index', [
             'threads' => ThreadResource::collection($threads->latest()->paginate()->withQueryString()),
             'categories' => Category::get(),
-            'filter' => $request->only(['search', 'page', 'category'])
+            'filter' => $request->only(['search', 'page', 'category', 'filtered'])
         ]);
     }
 
