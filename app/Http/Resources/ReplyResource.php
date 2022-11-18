@@ -18,10 +18,12 @@ class ReplyResource extends JsonResource
             'id' => $this->id,
             'body' => $this->body,
             'created_at' => $this->created_at->format("d F, Y"),
+            'likes_count' => $this->likes_count,
+            'parent_id' => $this->parent_id,
             'children' => ReplyResource::collection(
                 $this->when(
                     $this->has('children'),
-                    $this->children
+                    $this->children()->withCount('likes')->get()
                 )
             ),
             'user' => [

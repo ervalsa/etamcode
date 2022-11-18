@@ -11,6 +11,8 @@ class Thread extends Model
 
     protected $guarded = [];
 
+    protected $withCount = ['replies', 'likes'];
+
     public function getRouteKeyName() {
         return 'slug';
     }
@@ -25,5 +27,15 @@ class Thread extends Model
 
     public function replies() {
         return $this->hasMany(Reply::class);
+    }
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
+    }
+
+    public function answer()
+    {
+        return $this->belongsTo(Reply::class, 'answer_id');
     }
 }

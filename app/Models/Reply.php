@@ -11,7 +11,7 @@ class Reply extends Model
 
     protected $guarded = [];
 
-    protected $with = ['children.user'];
+    protected $with = ['children.user', 'user'];
 
     public function user()
     {
@@ -26,6 +26,11 @@ class Reply extends Model
     public function children()
     {
         return $this->hasMany(self::class, 'parent_id');
+    }
+
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
     }
 
 }

@@ -3,9 +3,10 @@ import App from "@/Layouts/App";
 import {Head, Link} from "@inertiajs/inertia-react";
 import PrimaryButton from "@/Components/PrimaryButton";
 
-export default function Home() {
+export default function Home({ threads }) {
+
     return (
-        <div>
+        <div className='py-20'>
             <Head title="Home" />
 
             <div className="flex flex-col gap-3 mb-[100px] text-white">
@@ -26,14 +27,39 @@ export default function Home() {
             <div>
                 <div className="text-white">
                     <h1 className="font-bold text-center text-4xl mt-0 mb-2">Pilih Topik dan Dapatkan Bantuan<br/>dari Programmer</h1>
-                    <p className="text-center">Banyaknya bahasa pemrograman, framework, dan tools yang bisa ditanyakan dan<br/>sudah dikelompokkan kedalam topik-topik tertentu</p>
+                    <p className="text-center mb-5">Banyaknya bahasa pemrograman, framework, dan tools yang bisa ditanyakan dan<br/>sudah dikelompokkan kedalam topik-topik tertentu</p>
                 </div>
             </div>
 
             <div className="mt-[50px]">
                 <div className="text-white">
                     <h1 className="font-bold text-center text-4xl mt-0 mb-2">Pertanyaan Terbaru</h1>
-                    <p className="text-center">Ini adalah daftar pertanyaan yang baru saja ditanyakan di EtamCode</p>
+                    <p className="text-center mb-5">Ini adalah daftar pertanyaan yang baru saja ditanyakan di EtamCode</p>
+                    <div className="grid grid-cols-3 gap-10">
+                        {threads.map((thread, index) => (
+                            <div key={index} className="bg-white rounded-2xl shadow hover:shadow-lg transition-shadow duration-200 p-6">
+                                <Link className="py-1 px-3 text-xs font-semibold bg-gray-800 text-gray-50 rounded-full" href={`/threads?category=${thread.category.slug}`}>
+                                    {thread.category.name}
+                                </Link>
+                                <h4 className="font-bold text-xl text-black mt-2 mb-3">
+                                    <Link href={`/threads/${thread.slug}`}>{thread.title}</Link>
+                                </h4>
+                                <div className="flex items-center justify-between text-sm">
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex-shrink-0">
+                                            <img className="w-5 h-5 rounded-full" src={thread.user.picture} alt={thread.user.name} />
+                                        </div>
+                                        <div className="text-black">
+                                            {thread.user.name}
+                                        </div>
+                                    </div>
+                                    <div className="text-gray-500">
+                                        {thread.created_at}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 

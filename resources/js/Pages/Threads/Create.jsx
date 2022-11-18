@@ -1,8 +1,9 @@
 import React from "react";
-import App from "@/Layouts/App";
+import Forum from "@/Layouts/Forum";
 import {Head, useForm} from "@inertiajs/inertia-react";
 import TextInput from "@/Components/TextInput";
 import PrimaryButton from "@/Components/PrimaryButton";
+import FormThread from "@/Components/FormThread";
 
 export default function Create(props) {
 
@@ -16,36 +17,19 @@ export default function Create(props) {
         setData(e.target.name, e.target.value)
     };
 
-    const storeHandler = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault();
         post(route('threads.store'))
     };
 
     return (
         <div>
-            <Head title="Tambah Thread" />
-
-            <div>
-                <form onSubmit={storeHandler}>
-                    <div className="mb-5">
-                        <p className="text-white text-lg">Judul</p>
-                        <TextInput type="text" name="title" value={data.title} handleChange={handleChange}/>
-                    </div>
-                    <div className="mb-5">
-                        <p className="text-white text-lg">Isi</p>
-                        <textarea name="body" value={data.body} onChange={handleChange}/>
-                    </div>
-                    <div className="mb-5">
-                        <select name="category_id" value={data.category_id} onChange={handleChange}>
-                            <option>Choose Category</option>
-                            {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                        </select>
-                    </div>
-                    <PrimaryButton className="bg-indigo-500">Buat Thread</PrimaryButton>
-                </form>
-            </div>
+            <Head title="Create Thread" />
+            <h1 className="text-white font-bold text-lg">Buat Thread Baru</h1>
+            <p className="text-white text-md mb-5">Membuat thread, agar kamu bisa mendapatkan jawaban</p>
+            <FormThread {... { data, submitHandler, handleChange, categories, submit: 'Create Thread'}}/>
         </div>
     );
 }
 
-Create.layout = page => <App children={page}/>
+Create.layout = page => <Forum children={page}/>
