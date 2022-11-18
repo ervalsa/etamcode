@@ -1,8 +1,7 @@
 import React from "react";
 import Forum from "@/Layouts/Forum";
-import TextInput from "@/Components/TextInput";
-import PrimaryButton from "@/Components/PrimaryButton";
 import {useForm} from "@inertiajs/inertia-react";
+import FormThread from "@/Components/FormThread";
 
 export default function Edit({ thread, categories}) {
 
@@ -12,7 +11,7 @@ export default function Edit({ thread, categories}) {
         category_id: thread.category_id,
     });
 
-    const updateHandler = (e) => {
+    const submitHandler = (e) => {
         e.preventDefault()
         put(route('threads.update', thread.slug))
     };
@@ -23,21 +22,9 @@ export default function Edit({ thread, categories}) {
 
     return(
         <div>
-            <form onSubmit={updateHandler}>
-                <div className="mb-5">
-                    <TextInput type="text" name="title" value={data.title} handleChange={handleChange}/>
-                </div>
-                <div className="mb-5">
-                    <textarea name="body" value={data.body} onChange={handleChange}/>
-                </div>
-                <div className="mb-5">
-                    <select name="category_id" value={data.category_id} onChange={handleChange}>
-                        <option>Choose Category</option>
-                        {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                    </select>
-                </div>
-                <PrimaryButton>Update Thread</PrimaryButton>
-            </form>
+            <h1 className="text-white font-bold text-lg">Edit Thread</h1>
+            <p className="text-white text-md mb-5">Edit thread, jika terdapat kesalahan penulisan</p>
+            <FormThread {... { data, submitHandler, handleChange, categories, submit: 'Update Thread'}}/>
         </div>
     );
 }
