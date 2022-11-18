@@ -1,5 +1,5 @@
 import React from "react";
-import App from "@/Layouts/App";
+import Forum from "@/Layouts/Forum";
 import TextInput from "@/Components/TextInput";
 import PrimaryButton from "@/Components/PrimaryButton";
 import {useForm} from "@inertiajs/inertia-react";
@@ -42,4 +42,4 @@ export default function Edit({ thread, categories}) {
     );
 }
 
-Edit.layout = page => <App children={page}/>
+Edit.layout = page => <Forum children={page}/>

@@ -42,7 +42,6 @@ class ThreadController extends Controller
                     case 'unsolved': $q->whereHas('replies')->whereNull('answer_id'); break;
                     case 'no-replies': $q->doesntHave('replies'); break;
 
-
                     default: abort(404); break;
                 }
             });

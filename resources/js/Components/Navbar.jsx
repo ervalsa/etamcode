@@ -50,9 +50,9 @@ export default function Navbar() {
                                 </div>
                                 {auth.user ?
                                     <>
-                                        <div className="py-0 5 text-black">
-                                            <DropdownLink href="/dashboard">Dashboard</DropdownLink>
-                                        </div>
+                                        {/*<div className="py-0 5 text-black">*/}
+                                        {/*    <DropdownLink href="/dashboard">Dashboard</DropdownLink>*/}
+                                        {/*</div>*/}
                                         <div className="py-0.5 text-black">
                                             <DropdownLink href="/threads?filtered=my-questions">
                                                 My Questions
@@ -82,11 +82,11 @@ export default function Navbar() {
                             <li><NavLink className="font-semibold uppercase text-black" href="/">ETAMCODE</NavLink></li>
                             <li><NavLink href="/">Home</NavLink></li>
                             <li><NavLink href="/threads">Threads</NavLink></li>
-                            {auth.user ? <li><NavLink href="/dashboard">Dashboard</NavLink></li> : ''}
+                            {/*{auth.user ? <li><NavLink href="/dashboard">Dashboard</NavLink></li> : ''}*/}
                         </ul>
                         {auth.user ?
                             <ul className="flex items-center gap-x-8">
-                                <li><NavLink href="/">{auth.user.name}</NavLink></li>
+                                <li><NavLink href="/dashboard">{auth.user.name}</NavLink></li>
                                 <li><NavLink href="/logout" method="POST" as="button">Logout</NavLink></li>
                             </ul>
                             :

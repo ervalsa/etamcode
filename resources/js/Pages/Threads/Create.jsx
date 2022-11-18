@@ -1,5 +1,5 @@
 import React from "react";
-import App from "@/Layouts/App";
+import Forum from "@/Layouts/Forum";
 import {Head, useForm} from "@inertiajs/inertia-react";
 import TextInput from "@/Components/TextInput";
 import PrimaryButton from "@/Components/PrimaryButton";
@@ -48,4 +48,4 @@ export default function Create(props) {
     );
 }
 
-Create.layout = page => <App children={page}/>
+Create.layout = page => <Forum children={page}/>

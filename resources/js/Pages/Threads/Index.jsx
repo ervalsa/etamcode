@@ -1,14 +1,35 @@
 import React, {useState, useEffect, useCallback} from "react";
-import App from "@/Layouts/App";
 import {Link} from "@inertiajs/inertia-react";
 import Pagination from "@/Components/Pagination";
 import {debounce, pickBy} from "lodash";
 import {Inertia} from "@inertiajs/inertia";
 import Filter from "@/Components/Filter";
+import Forum from "@/Layouts/Forum";
+import { Menu } from '@headlessui/react';
+
+const ThreadSetting = ({ thread }) => {
+    return (
+        <Menu as="div" className='relative'>
+            <Menu.Button>
+                <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                </svg>
+
+            </Menu.Button>
+            <Menu.Items className="absolute right-0 mr-4 bg-white w-52 border shadow-sm rounded-lg overflow-hidden py-0.5 top-0">
+                <Menu.Item>
+                    <Link className="py-2.5 block hover:bg-gray-50 px-4 text-black" href={`/threads/${thread.slug}/edit`}>
+                        Edit
+                    </Link>
+                </Menu.Item>
+            </Menu.Items>
+        </Menu>
+    )
+}
 
 export default function Index(props) {
 
-    const { filter, categories } = props;
+    const { filter, categories, auth } = props;
     const {data: threads, meta} = props.threads;
     const [keyword, setKeyword] = useState(filter.search)
 
@@ -43,10 +64,13 @@ export default function Index(props) {
                 <div className="block text-white bg-[#2D2F3A] shadow-sm p-5 rounded-lg hover:bg-blue-500 hover:text-white transition duration-150" key={thread.id}>
                     <Link href={route('threads.show', thread.slug)}>
                         <div className="flex flex-col gap-y-4">
-                            <div>
+                            <div className="flex items-center justify-between">
                                 <Link href={`/threads?category=${thread.category.slug}`} className="bg-indigo-900 px-2 py-1 rounded-[20px] text-white font-medium text-sm">
                                     {thread.category.name}
                                 </Link>
+                                {auth.user.id === thread.user.id ?
+                                    <ThreadSetting thread={thread} />
+                                : ''}
                             </div>
                             <div className="flex gap-x-4">
                                 <div className="flex-shrink-0">
@@ -96,4 +120,4 @@ export default function Index(props) {
     );
 }
 
-Index.layout = page => <App children={page} title="Threads"/>
+Index.layout = page => <Forum children={page} title="Threads"/>
