@@ -24,6 +24,7 @@ export default function Create(props) {
 
     return (
         <div>
+            <Head title="Create Thread" />
             <h1 className="text-white font-bold text-lg">Buat Thread Baru</h1>
             <p className="text-white text-md mb-5">Membuat thread, agar kamu bisa mendapatkan jawaban</p>
             <FormThread {... { data, submitHandler, handleChange, categories, submit: 'Create Thread'}}/>

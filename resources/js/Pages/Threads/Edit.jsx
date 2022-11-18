@@ -1,6 +1,6 @@
 import React from "react";
 import Forum from "@/Layouts/Forum";
-import {useForm} from "@inertiajs/inertia-react";
+import {Head, useForm} from "@inertiajs/inertia-react";
 import FormThread from "@/Components/FormThread";
 
 export default function Edit({ thread, categories}) {
@@ -22,6 +22,7 @@ export default function Edit({ thread, categories}) {
 
     return(
         <div>
+            <Head title="Edit Thread" />
             <h1 className="text-white font-bold text-lg">Edit Thread</h1>
             <p className="text-white text-md mb-5">Edit thread, jika terdapat kesalahan penulisan</p>
             <FormThread {... { data, submitHandler, handleChange, categories, submit: 'Update Thread'}}/>

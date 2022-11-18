@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from "react";
-import {Link} from "@inertiajs/inertia-react";
+import {Head, Link} from "@inertiajs/inertia-react";
 import Pagination from "@/Components/Pagination";
 import {debounce, pickBy} from "lodash";
 import {Inertia} from "@inertiajs/inertia";
@@ -43,6 +43,7 @@ export default function Index(props) {
 
     return (
         <div className="space-y-4">
+            <Head title="Threads" />
             <div className="flex items-center justify-between w-full">
                 <div className="flex flex-col lg:flex-row lg:items-center gap-2">
                     <Filter categories={categories} initialState={filter.category}/>
