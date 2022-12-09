@@ -14,11 +14,10 @@ const ThreadSetting = ({ thread }) => {
                 <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                 </svg>
-
             </Menu.Button>
-            <Menu.Items className="absolute right-0 mr-4 bg-white w-52 border shadow-sm rounded-lg overflow-hidden py-0.5 top-0">
+            <Menu.Items className="absolute right-0 mr-4 bg-white hover:bg-gray-200 w-52 border shadow-sm rounded-lg overflow-hidden py-0.5 top-0">
                 <Menu.Item>
-                    <Link className="py-2.5 block hover:bg-gray-50 px-4 text-black" href={`/threads/${thread.slug}/edit`}>
+                    <Link className="py-2.5 block px-4 text-black" href={`/threads/${thread.slug}/edit`}>
                         Edit
                     </Link>
                 </Menu.Item>
@@ -69,7 +68,7 @@ export default function Index(props) {
                                 <Link href={`/threads?category=${thread.category.slug}`} className="bg-indigo-900 px-2 py-1 rounded-[20px] text-white font-medium text-sm">
                                     {thread.category.name}
                                 </Link>
-                                {auth.user.id === thread.user.id ?
+                                {auth.user ? auth.user.id === thread.user.id &&
                                     <ThreadSetting thread={thread} />
                                 : ''}
                             </div>

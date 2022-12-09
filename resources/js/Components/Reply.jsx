@@ -101,10 +101,11 @@ export default function Reply({ thread, auth }) {
                                         <form onSubmit={replyStoreHandler}>
                                             <div className="mt-4 mb-2">
                                                     <textarea
-                                                        className="w-full"
+                                                        className="w-full rounded-lg resize-none"
                                                         name="body"
                                                         value={data.body}
-                                                        onChange={handleChange}>
+                                                        onChange={handleChange}
+                                                        placeholder={'Tulis komentarmu disini ...'}>
                                                     </textarea>
                                             </div>
                                             <div className="flex flex-row gap-x-2">

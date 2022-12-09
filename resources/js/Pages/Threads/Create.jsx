@@ -4,6 +4,7 @@ import {Head, useForm} from "@inertiajs/inertia-react";
 import TextInput from "@/Components/TextInput";
 import PrimaryButton from "@/Components/PrimaryButton";
 import FormThread from "@/Components/FormThread";
+import Tiptap from "@/Components/Tiptap";
 
 export default function Create(props) {
 
