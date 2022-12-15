@@ -50,4 +50,17 @@ class User extends Authenticatable
     public function threads() {
         return $this->hasMany(Thread::class);
     }
+
+    public function picture($size = 150) {
+        return "https://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?&s=" . $size;
+    }
+
+    public function replies() {
+        return $this->hasMany(Reply::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

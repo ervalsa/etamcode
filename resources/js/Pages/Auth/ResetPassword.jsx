@@ -32,7 +32,7 @@ export default function ResetPassword({ token, email }) {
     };
 
     return (
-        <>
+        <div>
             <Head title="Reset Password" />
 
             <form onSubmit={submit}>
@@ -88,7 +88,7 @@ export default function ResetPassword({ token, email }) {
                     </PrimaryButton>
                 </div>
             </form>
-        </>
+        </div>
     );
 }
 

@@ -32,7 +32,7 @@ export default function Register() {
     };
 
     return (
-        <>
+        <div>
             <Head title="Register" />
 
             <form onSubmit={submit}>
@@ -110,7 +110,7 @@ export default function Register() {
                     </PrimaryButton>
                 </div>
             </form>
-        </>
+        </div>
     );
 }
 
