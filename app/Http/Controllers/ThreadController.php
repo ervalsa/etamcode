@@ -114,6 +114,19 @@ class ThreadController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Thread  $thread
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard(Request $request)
+    {
+        return inertia('Dashboard', [
+            'threads' => ThreadResource::collection($threads->latest()->paginate()),
+        ]);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Thread  $thread
