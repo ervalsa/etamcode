@@ -160,6 +160,7 @@ class ThreadController extends Controller
         $thread->update([
             'title' => $request->title,
             'body' => $request->body,
+            'category_id' => $request->category_id
         ]);
 
         return redirect(route('threads.show', $thread));

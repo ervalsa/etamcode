@@ -36,7 +36,7 @@ export default function Home({ threads }) {
                     <h1 className="font-bold text-center text-4xl mt-0 mb-2">Pertanyaan Terbaru</h1>
                     <p className="text-center mb-5">Ini adalah daftar pertanyaan yang baru saja ditanyakan di EtamCode</p>
                     <div className="grid grid-cols-3 gap-10">
-                        {threads.map((thread, index) => (
+                        {threads.length ? threads.map((thread, index) => (
                             <div key={index} className="bg-white rounded-2xl shadow hover:shadow-lg transition-shadow duration-200 p-6">
                                 <Link className="py-1 px-3 text-xs font-semibold bg-gray-800 text-gray-50 rounded-full" href={`/threads?category=${thread.category.slug}`}>
                                     {thread.category.name}
@@ -58,7 +58,11 @@ export default function Home({ threads }) {
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                        )) :
+                            <div className='bg-white col-span-3 border border-dashed p-10 text-center text-gray-800 rounded-2xl'>
+                                No threads.
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
