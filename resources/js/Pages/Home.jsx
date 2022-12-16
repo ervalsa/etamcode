@@ -20,16 +20,16 @@ export default function Home({ threads }) {
                     <Link href={route('threads.index')}>
                         <PrimaryButton className="bg-gradient-to-l from-blue-600 to-indigo-500 rounded-[20px]">Jelajahi Forum</PrimaryButton>
                     </Link>
-                    <PrimaryButton className="rounded-[20px] bg-indigo-500">Baca Blog</PrimaryButton>
+                    {/*<PrimaryButton className="rounded-[20px] bg-indigo-500">Baca Blog</PrimaryButton>*/}
                 </div>
             </div>
 
-            <div>
-                <div className="text-white">
-                    <h1 className="font-bold text-center text-4xl mt-0 mb-2">Pilih Topik dan Dapatkan Bantuan<br/>dari Programmer</h1>
-                    <p className="text-center mb-5">Banyaknya bahasa pemrograman, framework, dan tools yang bisa ditanyakan dan<br/>sudah dikelompokkan kedalam topik-topik tertentu</p>
-                </div>
-            </div>
+            {/*<div>*/}
+            {/*    <div className="text-white">*/}
+            {/*        <h1 className="font-bold text-center text-4xl mt-0 mb-2">Pilih Topik dan Dapatkan Bantuan<br/>dari Programmer</h1>*/}
+            {/*        <p className="text-center mb-5">Banyaknya bahasa pemrograman, framework, dan tools yang bisa ditanyakan dan<br/>sudah dikelompokkan kedalam topik-topik tertentu</p>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <div className="mt-[50px]">
                 <div className="text-white">
@@ -63,12 +63,12 @@ export default function Home({ threads }) {
                 </div>
             </div>
 
-            <div className="mt-[50px]">
-                <div className="text-white">
-                    <h1 className="font-bold text-center text-4xl mt-0 mb-2">Blog Terakhir</h1>
-                    <p className="text-center">Jika mempunyai waktu maka luangkan dan manfaatkan dengan membaca<br/>blog-blog yang ditulis oleh pengguna EtamCode yang mungkin bermanfaat<br/>bagi Anda</p>
-                </div>
-            </div>
+            {/*<div className="mt-[50px]">*/}
+            {/*    <div className="text-white">*/}
+            {/*        <h1 className="font-bold text-center text-4xl mt-0 mb-2">Blog Terakhir</h1>*/}
+            {/*        <p className="text-center">Jika mempunyai waktu maka luangkan dan manfaatkan dengan membaca<br/>blog-blog yang ditulis oleh pengguna EtamCode yang mungkin bermanfaat<br/>bagi Anda</p>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     );
 }

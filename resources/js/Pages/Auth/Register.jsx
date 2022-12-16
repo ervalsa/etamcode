@@ -35,7 +35,7 @@ export default function Register() {
         <div>
             <Head title="Register" />
 
-            <form onSubmit={submit}>
+            <form className="text-white" onSubmit={submit}>
                 <div>
                     <InputLabel forInput="name" value="Name" />
 
@@ -43,7 +43,7 @@ export default function Register() {
                         type="text"
                         name="name"
                         value={data.name}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full text-black"
                         autoComplete="name"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -60,7 +60,7 @@ export default function Register() {
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full text-black"
                         autoComplete="username"
                         handleChange={onHandleChange}
                         required
@@ -76,7 +76,7 @@ export default function Register() {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full text-black"
                         autoComplete="new-password"
                         handleChange={onHandleChange}
                         required
@@ -92,7 +92,7 @@ export default function Register() {
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full text-black"
                         handleChange={onHandleChange}
                         required
                     />
@@ -100,13 +100,13 @@ export default function Register() {
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
-                    <Link href={route('login')} className="underline text-sm text-gray-600 hover:text-gray-900">
-                        Already registered?
-                    </Link>
+                <div className="flex items-center justify-end mt-8">
+                    {/*<Link href={route('login')} className="underline text-sm text-gray-600 hover:text-gray-900">*/}
+                    {/*    Already registered?*/}
+                    {/*</Link>*/}
 
-                    <PrimaryButton className="ml-4" processing={processing}>
-                        Register
+                    <PrimaryButton className="w-full mb-4 bg-gradient-to-l from-blue-600 to-indigo-500" processing={processing}>
+                        <p className="w-full text-center">Register</p>
                     </PrimaryButton>
                 </div>
             </form>

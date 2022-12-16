@@ -43,11 +43,11 @@ export default function Index(props) {
     return (
         <div className="space-y-4">
             <Head title="Threads" />
-            <div className="flex items-center justify-between w-full">
+            <div className="flex flex-col gap-y-4 lg:gap-y-0 mt-4 lg:flex-row items-center justify-between w-full">
                 <div className="flex flex-col lg:flex-row lg:items-center gap-2">
                     <Filter categories={categories} initialState={filter.category}/>
                 </div>
-                <div className="bg-white flex items-center overflow-hidden shadow rounded-lg px-2">
+                <div className="bg-white w-72 mb-4 lg:mb-0 flex items-center overflow-hidden shadow rounded-lg px-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
@@ -83,7 +83,7 @@ export default function Index(props) {
                                             {thread.body}
                                         </div>
                                     </div>
-                                    <div className="flex justify-between">
+                                    <div className="flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 justify-between">
                                         <div className="flex gap-x-4">
                                             <h4 className="text-sm">{thread.user.name}</h4>
                                             <span className="text-sm">{thread.created_at}</span>
@@ -115,7 +115,7 @@ export default function Index(props) {
                     No threads.
                 </div>
             }
-            <Pagination meta={meta}/>
+            <Pagination className="flex-col lg:flex-row gap-y-2" meta={meta}/>
         </div>
     );
 }

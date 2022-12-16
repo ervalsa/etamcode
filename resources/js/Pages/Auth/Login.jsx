@@ -36,7 +36,7 @@ export default function Login({ status, canResetPassword }) {
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
-            <form onSubmit={submit}>
+            <form className="text-white" onSubmit={submit}>
                 <div>
                     <InputLabel forInput="email" value="Email" />
 
@@ -44,7 +44,7 @@ export default function Login({ status, canResetPassword }) {
                         type="text"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full text-black"
                         autoComplete="username"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -60,7 +60,7 @@ export default function Login({ status, canResetPassword }) {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full text-black"
                         autoComplete="current-password"
                         handleChange={onHandleChange}
                     />
@@ -72,22 +72,22 @@ export default function Login({ status, canResetPassword }) {
                     <label className="flex items-center">
                         <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
 
-                        <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                        <span className="ml-2 text-sm">Remember me</span>
                     </label>
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
+                <div className="flex items-center justify-center mt-4">
+                    {/*{canResetPassword && (*/}
+                    {/*    <Link*/}
+                    {/*        href={route('password.request')}*/}
+                    {/*        className="underline text-sm text-gray-600 hover:text-gray-900"*/}
+                    {/*    >*/}
+                    {/*        Forgot your password?*/}
+                    {/*    </Link>*/}
+                    {/*)}*/}
 
-                    <PrimaryButton className="ml-4" processing={processing}>
-                        Log in
+                    <PrimaryButton className="w-full mb-4 bg-gradient-to-l from-blue-600 to-indigo-500" processing={processing}>
+                        <p className="w-full text-center">Log in</p>
                     </PrimaryButton>
                 </div>
             </form>

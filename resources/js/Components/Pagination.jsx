@@ -1,9 +1,9 @@
 import React from "react";
 import {Link} from "@inertiajs/inertia-react";
 
-export default function Pagination({meta}) {
+export default function Pagination({meta, className}) {
     return (
-        <div className="text-white flex items-center gap-x-2 pb-10">
+        <div className={`${className} text-white flex items-center gap-x-2 pb-10`}>
             {meta.links.map((link, key) => {
                 return link.url === null ? <span key={key} className="text-gray-500 mx-4" dangerouslySetInnerHTML={{ __html: link.label }}/> :
                     <Link
